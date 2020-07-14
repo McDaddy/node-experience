@@ -3,15 +3,32 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
-// app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-//     extended: true
-// })); 
+
+const sleep = async () => {
+    await new Promise(resolve => {
+        setTimeout(() => {
+            resolve()
+        }, 1000);
+    }) 
+}
+
 app.use(bodyParser.json())
+
+app.use(async (req, res, next) => {
+    console.log('middleware1 start');
+    await sleep().then(next);
+    console.log('middleware1 end');
+})
+
+app.use(async (req, res, next) => {
+    console.log('middleware2 start');
+    await sleep().then(next);
+    console.log('middleware2 end');
+})
 
 app.get('/', (req,res) => {
     console.log("req", req.query)
     res.sendFile(path.resolve(__dirname, './index.html'));
-    // res.send('hello world')
 })
 
 app.post('/api', (req,res) => {

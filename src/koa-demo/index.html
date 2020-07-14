@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koa</title>
+</head>
+<body>
+    <script>
+        function onClick() {
+            fetch('/api', {
+                method:'post',
+                body: JSON.stringify({
+                    test: 123,
+                    demo: 'asdadas'
+                }),
+                headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+        }
+    </script>
+    test
+    <button onclick="onClick()">click</button>
+</body>
+</html>
