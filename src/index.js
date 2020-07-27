@@ -19,20 +19,22 @@ const sleep = async () => {
     }) 
 }
 
-const outerSyncFunc = () => {
+const outerSyncFunc = async () => {
     console.log('out start');
-    innerSyncFunc();
+    await innerSyncFunc();
     console.log('out end');
 }
 
-const innerSyncFunc = async () => {
+const innerSyncFunc = () => {
   console.log('inner start');
 //   await sleep().then(() => {
 //       console.log('process middleware');
 //   });
-  setTimeout(() => {
-      console.log('inner end');
-  }, 1000)
+    console.log('inner end');
+
+//   setTimeout(() => {
+//       console.log('inner end');
+//   }, 1000)
 }
 
 outerSyncFunc();
