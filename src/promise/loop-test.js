@@ -1,31 +1,25 @@
 new Promise((resolve) => {
-    console.log(1)
+    console.log(1) // 同步代码
     resolve()
-  })
-  .then(() => {
-    console.log(2)
+  }).then(() => {
+    console.log(2) 
     new Promise((resolve) => {
         console.log(3)
         resolve()
-    })
-      .then(() => {
+    }).then(() => {
         console.log(4)
         new Promise((resolve) => {
-            console.log(5)
+            console.log(5) 
             resolve();
-          })
-          .then(() => {
+          }).then(() => {
             console.log(7)
-          })
-          .then(() => {
+          }).then(() => {
             console.log(9)
           })
-      })
-      .then(() => {
+      }).then(() => {
         console.log(8)
       })
-  })
-  .then(() => {
+  }).then(() => {
     console.log(6)
   })
 // 宏任务队列 1
