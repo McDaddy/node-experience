@@ -63,7 +63,7 @@ function myReq(filename){
     module.load(); // 调用load方法进行模块的加载
     return module.exports;
 }
-let r = myReq('./a'); // 默认只识别module.exports 的结果
+let r = myReq('./nomodule'); // 默认只识别module.exports 的结果
 console.log(r);
 
 

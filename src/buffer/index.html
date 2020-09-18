@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="file" id="avatar" />
+    <script>
+      // 前端的文件下载
+    //   let str = `<div>hello zf</div>`;
+    //   /// 文件类型 可以存储文件内容 文件的所有内容
+    //   const blob = new Blob([str],{
+    //       type:'text/html'
+    //   })
+    //   const a = document.createElement('a');
+    //   a.setAttribute('download','index.html')
+    //   a.href = URL.createObjectURL(blob);
+    //   console.log("URL.createObjectURL(blob)", URL.createObjectURL(blob))
+    //   a.click();
+
+      // 前端可以通过html5 实现二进制的读取
+
+      // formData中运行放blob =》 服务器 操作的就得是二进制
+      avatar.addEventListener("change", (e) => {
+        let file = e.target.files[0];
+        // let fileReader = new FileReader();
+        // fileReader.onload = function () {
+        //     let img = document.createElement('img');
+        //     img.src = fileReader.result;
+        //     document.body.appendChild(img)
+        // }
+        // fileReader.readAsDataURL(file); // base64Url
+
+        let img = document.createElement("img");
+        let url = URL.createObjectURL(file);
+        img.src = url;
+        document.body.appendChild(img);
+        // URL.revokeObjectURL(url);
+
+    //     // 浏览器中的二进制
+      });
+      // 一个字节 由八个位组成 最大转换成十进制是255
+      // ASCII  就是一个字节
+      // gb2312 一个汉字由2个字节组成  用了一部分来设计汉字
+      // gbk -> gb18030
+      // unicode => utf8 一个汉字就是3个字节 (js 语言 用的是utf16)
+
+      // 字节 汉字 不同的编码 汉字的字节不同
+
+      const arrayBuffer = new ArrayBuffer(4); // 字节  4 * 8
+      let x = new Uint8Array(arrayBuffer); // []
+      x[0] = 1;
+      x[1] = 255; // [1, 255, 0, 0]
+      //  00000000     0000000    1111111100000001
+      let x2 = new Uint16Array(arrayBuffer); //  16  2
+      console.log(x2); // [65281, 0]
+      let x3 = new Uint32Array(arrayBuffer); //  16  2
+      console.log(x3); // [65281]
+    </script>
+  </body>
+</html>
