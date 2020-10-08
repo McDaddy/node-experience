@@ -57,7 +57,7 @@ class Server {
 
   cache(req, res, statObj, filePath) {
     // 设置缓存， 默认强制缓存10s  10s内部不在像服务器发起请求 （首页不会被强制缓存） 引用的资源可以被强制缓存
-    // res.setHeader("Expires", new Date(Date.now() + 10 * 10000).toGMTString());
+    res.setHeader("Expires", new Date(Date.now() + 10 * 10000).toGMTString());
     // no-cache 表示每次都像服务器发请求
     // no-store 表示浏览器不进行缓存
     res.setHeader("Cache-Control", "no-cache"); // http1.1新浏览器都识别cache-control
