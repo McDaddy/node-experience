@@ -1,23 +1,38 @@
-(function (exports) {
-  'use strict';
+(function () {
+    'use strict';
 
-  // ts 中拥有的类型
-  console.log(0 /* USER */);
-  // let n:never = MyError();
-  // Symbol BigInt   symbol 表示独一无二 元编程会用到 stringToFlag iterator ....
-  var s1 = Symbol("123");
-  var s2 = Symbol("123");
-  console.log(s1 == s2);
-  // BigInt
-  var num1 = BigInt(Number.MAX_SAFE_INTEGER) + BigInt(1);
-  var num2 = BigInt(Number.MAX_SAFE_INTEGER) + BigInt(2);
-  console.log(Number);
+    var __extends = (undefined && undefined.__extends) || (function () {
+        var extendStatics = function (d, b) {
+            extendStatics = Object.setPrototypeOf ||
+                ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+            return extendStatics(d, b);
+        };
+        return function (d, b) {
+            extendStatics(d, b);
+            function __() { this.constructor = d; }
+            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+        };
+    })();
+    var Animal = /** @class */ (function () {
+        function Animal(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        return Animal;
+    }());
+    var Cat = /** @class */ (function (_super) {
+        __extends(Cat, _super);
+        function Cat(name, age, sex) {
+            var _this = _super.call(this, name, age) || this;
+            _this.sex = sex;
+            console.log(_this.age); // 子类访问
+            return _this;
+        }
+        return Cat;
+    }(Animal));
+    var p = new Cat('Tom', 18, 'man');
+    console.log(Object.getPrototypeOf(Cat) === Animal); // 外层访问
 
-  exports.num1 = num1;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-  return exports;
-
-}({}));
+}());
 //# sourceMappingURL=bundle.js.map
