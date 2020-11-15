@@ -2,9 +2,9 @@
   "name": "typescript-lesson",
   "version": "1.0.0",
   "description": "",
-  "main": "enum.js",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "rollup -c -w"
   },
   "keywords": [],
   "author": "",
