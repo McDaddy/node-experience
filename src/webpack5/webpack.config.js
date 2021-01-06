@@ -1,9 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const tsImportPluginFactory = require('ts-import-plugin')
+const ESBuildPlugin = require('esbuild-webpack-plugin');
+
+const EsBuildPlugin = ESBuildPlugin.default;
+
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  mode: "development",
+  mode:  isProd ? 'production': "development",
   devtool: false,
   // devtool: 'hidden-source-map',
   entry: "./src/index.tsx",
@@ -36,6 +41,9 @@ module.exports = {
         },
       },
     },
+    minimizer: isProd ? [
+      new EsBuildPlugin(),
+    ]: []
   },
   module: {
     rules: [
@@ -109,5 +117,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
+    ...(isProd ? [new EsBuildPlugin()] : [])
   ],
 };
