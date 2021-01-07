@@ -10,7 +10,6 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   mode:  isProd ? 'production': "development",
   devtool: false,
-  // devtool: 'hidden-source-map',
   entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "./public"),
@@ -41,9 +40,9 @@ module.exports = {
         },
       },
     },
-    minimizer: isProd ? [
-      new EsBuildPlugin(),
-    ]: []
+    // minimizer: isProd ? [
+    //   new EsBuildPlugin(),
+    // ]: []
   },
   module: {
     rules: [
@@ -117,6 +116,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
-    ...(isProd ? [new EsBuildPlugin()] : [])
   ],
 };
