@@ -8,10 +8,21 @@ import TopLevelAwait from "./top-level-await";
 const Entry = () => {
   function1();
 
+  const [count, setCount] = React.useState(1);
+
+  const onClick = () => {
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount((current) => current + 1)
+    setCount((current) => current + 1)
+  }
+
   return (
     <div style={{ fontSize: 20 }}>
+      {/* <div>{count}</div>
+      <button onClick={onClick}>click</button> */}
       {/* <ImportLodash /> */}
-      {/* <ImportPage /> */}
+      <ImportPage />
       {/* <TopLevelAwait /> */}
     </div>
   );

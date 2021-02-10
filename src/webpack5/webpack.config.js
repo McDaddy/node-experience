@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const tsImportPluginFactory = require('ts-import-plugin')
 const ESBuildPlugin = require('esbuild-webpack-plugin');
+const MyPlugin = require('./my-plugin');
 
 const EsBuildPlugin = ESBuildPlugin.default;
 
@@ -23,7 +24,7 @@ module.exports = {
     topLevelAwait: true,
   },
   optimization: {
-    // usedExports:false,
+    // usedExports:'false',
     // providedExports: false,
     splitChunks: {
       chunks: "all",
@@ -116,5 +117,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
+    new MyPlugin()
   ],
 };

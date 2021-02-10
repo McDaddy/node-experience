@@ -12,11 +12,9 @@ const Page = () => {
     console.log("page");
   };
 
-  // console.log(Table);
-
   return (
     <div>
-      <Button onClick={onClick}>click1</Button>
+      <Button type="primary" onClick={onClick}>click1</Button>
     </div>
   );
 };
